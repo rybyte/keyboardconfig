@@ -1,7 +1,7 @@
 #!/bin/bash
 work_dir=$(pwd)
 cd ../zmk
-git pull
+git checkout v0.3.0
 
 source .venv/bin/activate
 
@@ -9,8 +9,8 @@ cd app/
 
 west config build.cmake-args   -- "-DZMK_CONFIG=$work_dir/config";
 
-west build -p -d build/left -b nice_nano -- -DSHIELD=splitkb_aurora_sofle_left
-west build -p -d build/right -b nice_nano -- -DSHIELD=splitkb_aurora_sofle_right
+west build -p -d build/left -b nice_nano_v2 -- -DSHIELD=splitkb_aurora_sofle_left
+west build -p -d build/right -b nice_nano_v2 -- -DSHIELD=splitkb_aurora_sofle_right
 west build -p -d build/settings_reset -b nice_nano -- -DSHIELD=settings_reset
 
 output_dir=$work_dir/uf2
